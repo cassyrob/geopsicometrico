@@ -1,0 +1,27 @@
+// script.js
+function submitQuiz() {
+    let score = 0;
+    let totalQuestions = 3;
+    
+    // Obtener las respuestas
+    const q1 = document.querySelector('input[name="q1"]:checked');
+    const q2 = document.querySelector('input[name="q2"]:checked');
+    const q3 = document.querySelector('input[name="q3"]:checked');
+
+    // Verificar si se han seleccionado respuestas
+    if (!q1 || !q2 || !q3) {
+        alert("Por favor, responde todas las preguntas.");
+        return;
+    }
+
+    // Sumar los valores de las respuestas seleccionadas
+    score += parseInt(q1.value);
+    score += parseInt(q2.value);
+    score += parseInt(q3.value);
+
+    // Mostrar los resultados
+    document.getElementById("quizForm").style.display = "none";
+    document.getElementById("result").style.display = "block";
+    let resultMessage = `Tu puntuación es: ${score} de ${totalQuestions * 3}`;
+    document.getElementById("score").textContent = resultMessage;
+}
